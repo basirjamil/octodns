@@ -92,6 +92,7 @@ class Record(EqualityTupleMixin):
             _class = {
                 'A': ARecord,
                 'AAAA': AaaaRecord,
+                'AKAMAITLC':AkamaiTLCRecord,
                 'ALIAS': AliasRecord,
                 'CAA': CaaRecord,
                 'CNAME': CnameRecord,
@@ -745,6 +746,15 @@ class ARecord(_DynamicMixin, _GeoMixin, Record):
 class AaaaRecord(_DynamicMixin, _GeoMixin, Record):
     _type = 'AAAA'
     _value_type = Ipv6List
+
+
+class AkamaiTLCValue(_TargetValue):
+    pass
+
+
+class AkamaiTLCRecord(_ValueMixin, Record):
+    _type = 'AKAMAITLC'
+    _value_type = AkamaiTLCValue
 
 
 class AliasValue(_TargetValue):
