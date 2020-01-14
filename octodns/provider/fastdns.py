@@ -160,7 +160,7 @@ class AkamaiProvider(BaseProvider):
     SUPPORTS_GEO = False
     SUPPORTS_DYNAMIC = False
 
-    SUPPORTS = set(('A', 'AAAA', 'CNAME', 'MX', 'NAPTR', 'NS', 'PTR', 'SPF',
+    SUPPORTS = set(('A', 'AAAA', 'AKAMAITLC', 'CNAME', 'MX', 'NAPTR', 'NS', 'PTR', 'SPF',
                     'SRV', 'SSHFP', 'TXT'))
 
     def __init__(self, id, client_secret, host, access_token, client_token,
@@ -323,6 +323,8 @@ class AkamaiProvider(BaseProvider):
             'value': value
         }
 
+    _data_for_AKAMAITLC = _data_for_CNAME
+
     def _data_for_MX(self, _type, records):
         values = []
         for r in records['rdata']:
@@ -419,6 +421,7 @@ class AkamaiProvider(BaseProvider):
     _params_for_AAAA = _params_for_multiple
     _params_for_NS = _params_for_multiple
 
+    _params_for_AKAMAITLC = _params_for_single
     _params_for_CNAME = _params_for_single
     _params_for_PTR = _params_for_single
 
